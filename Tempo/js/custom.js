@@ -15,6 +15,10 @@
         }
     });
        
+
+    // Instantiate MixItUp:
+    $('#Container').mixItUp();
+
     // Team Slider
     $('.autoplay').slick({
         dots: true,

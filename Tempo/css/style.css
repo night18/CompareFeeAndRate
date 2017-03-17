@@ -25,7 +25,7 @@ Header
 **************************************/
 .section-padding
 {
-	padding: 20px 0px;
+	padding: 40px 0px;
 }
 .main-navigation
 {
@@ -83,7 +83,6 @@ Header
 .jumbotron
 {
     background-color: transparent;
-    text-align: center;
     padding-top: 90px;
 }
 .jumbotron p.big
@@ -92,9 +91,10 @@ Header
     border-width: 0px;
     margin: 0px;
     padding: 0px;
-    letter-spacing: 4px;
+    letter-spacing: 6px;
     font-size: 15px;
     color: #fff;
+    text-transform: uppercase;
     font-weight: 400;
     color: #ffffff;
     -webkit-filter: drop-shadow(0 1px 1px rgba(0, 0, 0, 0.4));
@@ -463,38 +463,6 @@ margin-top: 5px;
     background-color: #fff;
     border: 0px;
 }
-.card
-{
-    background: #FAEBD7;
-    text-align: center;
-    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
-    width: 350px;
-    height: 240px;
-    margin: 15px;
-}
-
-.card:hover {
-    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
-}
-
-.container {
-    padding: 2px 16px;
-}
-
-.card_table{
-    width: 100%
-}
-
-.card_row{
-    padding-bottom: 10px;
-    height: 33px
-}
-
-.card_cell
-{
-    width: 50%;
-}
-
 /**************************************
 cta
 **************************************/
