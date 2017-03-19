@@ -1,8 +1,10 @@
 
 $(document).ready(function(){
+	var orderCard;
+
 	$("#search").click(function(){
 		var amount_send = $("#amount_send").val();
-
+		var MXNUSD = 19.0708673;
 
 		if(! $.isNumeric(amount_send) || amount_send <= 0){
 			return false;
@@ -11,7 +13,8 @@ $(document).ready(function(){
 		var container = $("#Container");
 		container.empty();
 
-		var mixer = mixitup(container);
+		var mixer = container.mixItUp();
+		orderCard = [];
 
 		$.getJSON("js/rate.json",function(data){
 
@@ -35,6 +38,9 @@ $(document).ready(function(){
 				var usdcost_row = $("<tr/>",{'class':"card_row"});
 				var usdcost_label = $("<td/>",{'class':"card_cell"}).text("Total Cost(USD)");
 				var usdcost_cell = $("<td/>",{'class':"card_cell"});
+				var mxnget_row = $("<tr/>",{'class':"card_row"});
+				var mxnget_label = $("<td/>",{'class':"card_cell"}).text("You get (MXN):");
+				var mxnget_cell = $("<td/>",{'class':"card_cell"});
 
 
 				if(value.hasOwnProperty('name')){
@@ -95,14 +101,16 @@ $(document).ready(function(){
 					}
 				}
 
+				var usdFee;
+
 				if(value.hasOwnProperty('fee') && value.hasOwnProperty('rate')){
 					
-					var usdFee = amount_send * value.rate / 100 + value.fee;
+					usdFee = amount_send * value.rate / 100 + value.fee;
 					var percentFee = usdFee / amount_send;
 					percent_cell.append((percentFee * 100).toFixed(2));
 					usdcost_cell.append("$"+usdFee.toFixed(2));
 					card.attr("data-price", usdFee);
-
+					mxnget_cell.append(((amount_send-value.fee) *MXNUSD*(100-value.rate)/100).toFixed(2) );
 				}
 
 				payment_row.append(payment_label).append(payment_cell);
@@ -110,16 +118,34 @@ $(document).ready(function(){
 				time_row.append(time_label).append(time_cell);
 				percent_row.append(percent_label).append(percent_cell);
 				usdcost_row.append(usdcost_label).append(usdcost_cell);
-				cardTable.append(payment_row).append(receive_row).append(time_row).append(percent_row).append(usdcost_row);
+				mxnget_row.append(mxnget_label).append(mxnget_cell);
+				cardTable.append(payment_row).append(receive_row).append(time_row).append(percent_row).append(usdcost_row).append(mxnget_row);
 
 
 				card.append(cardName);
 				card.append(cardTable);
 
 				// container.append(card);
-				mixer.append(card);
+
+				orderCard.push([usdFee,card]);
+				
 			});
-			mixer.sort("data-price:asc")
+
+			function sortFunction(a,b){
+				if(a[0] === b[0]){
+					return 0;
+				}
+				else{
+					return(a[0] < b[0])? -1:1;
+				}
+			}
+
+			orderCard.sort(sortFunction);
+
+			for(var i = 0; i < orderCard.length; i++){
+				container.mixItUp('insert', i ,orderCard[i][1], {filter: "all"});
+			}
+			
 			
 			$('html,body').animate({scrollTop:$("#table").offset().top},800);
 		});
