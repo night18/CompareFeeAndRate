@@ -1,13 +1,26 @@
 
 $(document).ready(function(){
 	var orderCard;
+	var MXNUSD = 0;
+
+	var setRate = function(data) {
+	  fx.rates = data.rates;
+	  MXNUSD = fx(1).from("USD").to("MXN");
+	  console.log(MXNUSD);
+	}
+
+	$.getJSON("http://api.fixer.io/latest", setRate);
 
 	$("#search").click(function(){
 		var amount_send = $("#amount_send").val();
-		var MXNUSD = 19.0708673;
+		// var MXNUSD = 19.0708673;
 
 		if(! $.isNumeric(amount_send) || amount_send <= 0){
+			alert("Please input a positive number");
 			return false;
+		}
+		if (MXNUSD == 0){
+			alert("There are some error about exchange rate, please contact HCI@WVU Lab");
 		}
 
 		var container = $("#Container");
