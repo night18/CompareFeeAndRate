@@ -9,7 +9,7 @@ $(document).ready(function(){
 	  console.log(MXNUSD);
 	}
 
-	$.getJSON("http://api.fixer.io/latest", setRate);
+	$.getJSON("https://api.fixer.io/latest", setRate);
 
 	$("#search").click(function(){
 		var amount_send = $("#amount_send").val();
