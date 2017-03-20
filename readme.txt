@@ -1,6 +1,2 @@
-Thanks for downloading this theme!
-
-Theme Name: Tempo
-Theme URL: https://bootstrapmade.com/tempo-free-onepage-bootstrap-theme/
-Author: BootstrapMade.com
-Author URL: https://bootstrapmade.com
+This is a exchange rate searching website.
+We compare a few company and their service to provide the cheapest way for the users who want to transfer the money from USD to MXN.

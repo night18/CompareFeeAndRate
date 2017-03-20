@@ -191,7 +191,7 @@
 		},
 		{
 		"id": 22,
-		"name": "Xoom",
+		"name": "Xoom*",
 		"payment": [2],
 		"receive": [3],
 		"time":1,
@@ -200,7 +200,7 @@
 		},
 		{
 		"id": 23,
-		"name": "Xoom",
+		"name": "Xoom*",
 		"payment": [1],
 		"receive": [3],
 		"time":4,
