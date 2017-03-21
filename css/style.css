@@ -501,6 +501,9 @@ margin-top: 5px;
 {
     width: 50%;
 }
+.card_cell h3{
+    font-size: 20px
+}
 
 /**************************************
 cta

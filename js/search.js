@@ -65,7 +65,8 @@ $(document).ready(function(){
 		var mxnget_cell_b = $("<b/>");
 		var actrate_row = $("<tr/>",{'class':"card_row"});
 		var actrate_label = $("<td/>",{'class':"card_cell"});
-		var actrate_label_h3 = $("<h3/>").text("Actual Rate");
+		var breakline = $("<br/>");
+		var actrate_label_h3 = $("<h3/>").text("Actual Rate").append(breakline).append("(The higher the better)");
 		var actrate_cell = $("<td/>",{'class':"card_cell"});
 		var actrate_cell_h3 = $("<h3/>");
 		var actrate_cell_b = $("<b/>");
@@ -85,7 +86,7 @@ $(document).ready(function(){
 
 		mxnget_row.append(mxnget_label).append(mxnget_cell);
 		actrate_row.append(actrate_label).append(actrate_cell);
-		cardTable.append(mxnget_row).append(actrate_row);
+		cardTable.append(actrate_row).append(mxnget_row);
 		card.append(cardName).append(cardTable);
 
 		orderCard.push([actRate,card]);
