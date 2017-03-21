@@ -1843,7 +1843,7 @@
 					frag.appendChild(el);
 					frag.appendChild(document.createTextNode(' '));
 				}
-
+				// console.log(self._$targets.length);
 				self._$parent[0].insertBefore(frag, target);
 			}
 			
