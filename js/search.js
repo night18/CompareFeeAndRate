@@ -79,7 +79,7 @@ $(document).ready(function(){
 		mxnget_cell_h3.append(mxnget_cell_b);
 		mxnget_cell.append(mxnget_cell_h3);
 		actrate_label.append(actrate_label_h3);
-		actrate_cell_b.text(actRate.toFixed(2));
+		actrate_cell_b.text(actRate.toFixed(4));
 		actrate_cell_h3.append(actrate_cell_b);
 		actrate_cell.append(actrate_cell_h3);
 
