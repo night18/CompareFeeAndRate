@@ -16,6 +16,15 @@ $(document).ready(function(){
 	/*Amount you send from USD, which excludes the transaction fee*/
 	var amount_send;
 
+	function sortFunction(a,b){
+		if(a[0] === b[0]){
+			return 0;
+		}
+		else{
+			return(a[0] < b[0])? 1:-1;
+		}
+	}
+
 
 	var confirmListener = function(id){
 		amount_send = $("#amount_send").val();
@@ -44,7 +53,6 @@ $(document).ready(function(){
 			return false;
 		}
 		container.empty();
-		orderCard = [];
 		
 		var card = $("<div/>",{'class': "filimg mix col-md-4 col-sm-4 col-xs-12 card category-1"});
 		var cardName = $("<h3/>").text(name);
@@ -63,7 +71,8 @@ $(document).ready(function(){
 		var actrate_cell_b = $("<b/>");
 	
 		var mxnGet = amount_send * rate;
-		var actRate = mxnGet/(amount_send+fee);
+		var actRate = mxnGet/(Number(amount_send)+Number(fee));
+		console.log(mxnGet + "   "+ (Number(amount_send)+Number(fee)));
 
 		mxnget_label.append(mxnget_label_h3);
 		mxnget_cell_b.text(mxnGet.toFixed(2));
@@ -79,21 +88,14 @@ $(document).ready(function(){
 		cardTable.append(mxnget_row).append(actrate_row);
 		card.append(cardName).append(cardTable);
 
-		orderCard.push([mxnGet,card]);
-
-		function sortFunction(a,b){
-			if(a[0] === b[0]){
-				return 0;
-			}
-			else{
-				return(a[0] < b[0])? -1:1;
-			}
-		}
+		orderCard.push([actRate,card]);
 
 		orderCard.sort(sortFunction);
 		
 
-		var addcard = $("<div/>",{'class': "mix col-md-4 col-sm-4 col-xs-12 card addcard category-1"});
+		var addcard = $("<div/>",{'class': "mix col-md-4 col-sm-4 col-xs-12 card addcard category-1"}).click(function(){
+			addcardListener();
+		});
 
 		container.mixItUp('insert',0, addcard, {filter: "all"});
 
@@ -103,8 +105,7 @@ $(document).ready(function(){
 
 	}
 
-	$(".addcard").click(function(){
-		console.log("!!!!!!!");
+	var addcardListener = function(){
 		var id = index;
 
 		var card = $("<div/>",{'class': "filimg mix col-md-4 col-sm-4 col-xs-12 card category-1", 'id':id+"_card"});
@@ -112,21 +113,21 @@ $(document).ready(function(){
 		var name_row = $("<tr/>",{'class':"card_row"});
 		var name_label = $("<td/>",{'class':"card_cell"}).text("Option Name");
 		var name_cell = $("<td/>",{'class':"card_cell"});
-		var name_input = $("<input/>",{'type':"text",'id':id+"_name"});
+		var name_input = $("<input/>",{'type':"text",'id':id+"_name",'placeholder':"Organization Name"});
 		name_cell.append(name_input);
 		name_row.append(name_label).append(name_cell);
 
 		var fee_row = $("<tr/>",{'class':"card_row"});
 		var fee_label = $("<td/>",{'class':"card_cell"}).text("Transaction Fee");
 		var fee_cell = $("<td/>",{'class':"card_cell"});
-		var fee_input = $("<input/>",{'type':"text",'id':id+"_fee"});
+		var fee_input = $("<input/>",{'type':"text",'id':id+"_fee",'placeholder':"USD"});
 		fee_cell.append(fee_input);
 		fee_row.append(fee_label).append(fee_cell);
 
 		var rate_row = $("<tr/>",{'class':"card_row"});
 		var rate_label = $("<td/>",{'class':"card_cell"}).text("Exchange rate");
 		var rate_cell = $("<td/>",{'class':"card_cell"});
-		var rate_input = $("<input/>",{'type':"text",'id':id+"_rate"});
+		var rate_input = $("<input/>",{'type':"text",'id':id+"_rate",'placeholder':"1 USD = ? MXN"});
 		rate_cell.append(rate_input);
 		rate_row.append(rate_label).append(rate_cell)
 
@@ -137,17 +138,15 @@ $(document).ready(function(){
 		});
 		
 		card.append(cardTable).append(confirm_button);
-		$(this).remove();
+		$(".addcard").remove();
 
-		 $("#Container").mixItUp('insert',1,card, {filter: "all"});
+		 $("#Container").mixItUp('insert',0 ,card, {filter: "all"});
 		index++;
-		
+	}
+
+	$(".addcard").click(function(){
+		addcardListener();
 	});
-
-
-
-
-	
 
 	$("#search").click(function(){
 		$('html,body').animate({scrollTop:$("#table").offset().top},800);
