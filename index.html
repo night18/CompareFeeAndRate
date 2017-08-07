@@ -13,6 +13,7 @@
 </head>
 <body>
 	<!--HEADER START-->
+	<header>
 	<div class="main-navigation navbar-fixed-top">
 		<nav class="navbar navbar-default">
 			<div class="container">
@@ -22,14 +23,12 @@
 			    <span class="icon-bar"></span>
 			    <span class="icon-bar"></span>
 			  </button>
-			   <a href="http://www.saiph.org/HCI@WVU/"><img src="img/logo2.png"/></a>
+			   <a href="http://humancomputerinteraction.wvu.edu/"><img src="img/logo2.png"/></a>
 			   <img src="img/cross.png"/> 
-			   <a href="http://www.saiph.org/HCI@WVU/"><img src="img/logo.png"/></a>
+			   <a href="http://humancomputerinteraction.wvu.edu/"><img src="img/logo.png"/></a>
 			</div>
 			<div class="collapse navbar-collapse" id="myNavbar">
 			  <ul class="nav navbar-nav navbar-right">
-			    <li class="active"><a href="#banner">Home</a></li>
-			    <li><a href="#table">Table</a></li>
 			    <li><a href="https://night18.github.io/TiposDeCambio/">
 			    <img src="img/spanish.png"/></a></li>
 			  </ul>
@@ -37,23 +36,10 @@
 		  </div>
 		</nav>
 	</div>
+	</header>
 	<!--HEADER END-->
 
-	<!--BANNER START-->
-	<div id="banner" class="section-padding">
-		<div class="container">
-			<div class="row">
-				<div class="jumbotron text-center">
-				  <p class="big">Please input the amount of <b>USD</b> you want to transfer to Mexico. </p><br>
-				  <input type="text" name="amount_send" id="amount_send" style="margin: 0px 15px 0px 0px" placeholder="Amount exclude fee"/>
-				  <button type="button" id="search">Set Options</button>
-				</div>
-			</div>
-		</div>
-	</div>
-	<!--BANNER END-->
-
-	<!--CTA1 START-->
+		<!--CTA1 START-->
 	<div class="cta-1">
 		<div class="container">
 			<div class="row text-center white">
@@ -63,20 +49,107 @@
 	</div>
 	<!--CTA1 END-->
 
-	<!--SERVICE START-->
-	<div id="table" class="section-padding">
+	<div id="explain" class="section-padding">
 		<div class="container">
 			<div class="row">
-				<div class="page-title text-center">
+				<div class="text-center">
 					<h2>The true amount you sent</h2>
 					<p>We help you calculate effective exchange rate (considering transaction fee ) of different <br>companies you offer.You just need to enter the name of the company (to recognize it), <br>the transaction fee they charge and the exchange rate they offer to you.</p>
 					<hr class="pg-titl-bdr-btm"></hr>
 				</div>
-				<div class="port-sec">
-								
-					<div id="Container" class="text-center">
+			</div>
+		</div>
+	</div>
 
-						<div class=" mix col-md-4 col-sm-4 col-xs-12 card addcard"> </div>
+
+	<!--BANNER START-->
+	<div id="banner" class="section-padding">
+		<div class="container">
+			<div class="row">
+				<div class="text-center">
+				  <p><h3>Please input the amount of <b>USD</b> you want to transfer to Mexico.</h3></p><br>
+				  <input class="inputbox" type="text" name="amount_send" id="amount_send" style="margin: 0px 15px 0px 0px" placeholder="Amount exclude fee"/>
+				  <button class="button" type="button" id="search">Next</button>
+				  <hr class="pg-titl-bdr-btm"></hr>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!--BANNER END-->
+
+	<!--SERVICE START-->
+	<div id="table" class="section-padding">
+		<div class="container">
+			<div class="row">
+				<!--Formulario-->
+				<div class="panel panel-default hidden-xs col-sm-12 col-md-3 col-lg-4 text-center">
+					<div class="panel-heading" role="tab" id="heading1">
+						<h1 class="panel-title">
+							<a href="#collapse1" data-toggle="collapse" data-parent="#accordion">
+								Option Name 
+							</a>
+						</h1>
+					</div>
+
+					<div id="collapse1" class="panel-collapse collapse" >
+						<div class="panel-body">
+							<div class="form-group">
+								<!-- [20170807 Chun] Delete rebundency explaination -->
+								<!-- <label for="nombre">Option Name: </label><br> -->
+								<input class="form-control inputbox" id="nombre" type="text" name="" style="width: 60%; display: inline-block;" placeholder="Organization Name ">
+								<!-- [20170807 Chun] Add Next button -->
+								<button class="button" type="button"  style="width: 35%; display: inline-block;" id="name_next">Next</button>
+							</div>
+						</div>
+					</div>
+				</div>
+
+
+
+				<div class="panel panel-default hidden-xs col-sm-12 col-md-3 col-lg-4 text-center">
+					<div class="panel-heading" role="tab" id="heading2">
+						<h1 class="panel-title">
+							<a href="#collapse2" data-toggle="collapse" data-parent="#accordion">
+								Transaction Fee
+							</a>
+						</h1>
+					</div>
+
+					<div id="collapse2"  class="panel-collapse collapse">
+						<div class="panel-body">
+							<div class="form-group">
+								<!-- [20170807 Chun] Delete rebundency explaination -->
+								<!-- <label for="nombre">Transaction Fee:</label><br> -->
+								<!-- [20170731 Chun] Change the id to distinguish different forms, change id from "nombre" to "fee"-->
+								<input class="form-control inputbox" id="fee" type="text" name="" style="width: 60%; display: inline-block;" placeholder="USD">
+								<!-- [20170807 Chun] Add Next button -->
+								<button class="button" type="button"  style="width: 35%; display: inline-block;" id="fee_next">Next</button>
+							</div>
+						</div>
+					</div>
+				</div>
+
+
+
+				<div class="panel panel-default hidden-xs col-sm-12 col-md-3 col-lg-4 text-center">
+					<div class="panel-heading" role="tab" id="heading3">
+						<h1 class="panel-title">
+							<a href="#collapse3" data-toggle="collapse" data-parent="#accordion">
+								Exchange rate
+							</a>
+						</h1>
+					</div>
+
+					<div id="collapse3" class="panel-collapse collapse">
+						<div class="panel-body">
+							<div class="form-group">
+								<!-- [20170807 Chun] Delete rebundency explaination -->
+								<!-- <label for="nombre">Exchange rate:</label><br> -->
+								<!-- [20170731 Chun] Change the id to distinguish different forms, change id from "nombre" to "rate"-->
+								<input class="form-control inputbox" id="rate" type="text" name="" style="width: 60%; display: inline-block;" placeholder="1 USD = ? MXN">
+								<button class="gobutton" type="button"  style="width: 35%; display: inline-block;" id="confirm">Confirm</button>
+							</div>
+						</div>
 					</div>
 				</div>
 				
@@ -84,6 +157,19 @@
 		</div>
 	</div>
 	<!--SERVICE END-->
+
+	<div id="table" class="section-padding">
+		<div class="container">
+			<div class="row">
+				<div class="port-sec">
+								
+					<div id="Container" class="text-center">
+
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
 
 	<!--FOOTER START-->
 	<footer class="footer section-padding">
@@ -109,7 +195,7 @@
 				<div class="footer_copyright">
 					<p> © Copyright, All Rights Reserved.</p>					
 					<div class="credits">
-                        Designed by <a href="http://www.saiph.org/HCI@WVU/"> <img src="img/logo2.png"/></a>
+                        Designed by <a href="http://humancomputerinteraction.wvu.edu/"> <img src="img/logo2.png"/></a>
                     </div>
 				</div>
 			</div>
